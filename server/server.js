@@ -1,5 +1,7 @@
 import express from "express";
 import { AppDataSource } from "./config/db.js";
+import postRoutes from "./routes/postRoutes.js";
+import commentRoutes from "./routes/commentRoutes.js";
 
 const app = express();
 app.use(express.json());
@@ -7,6 +9,9 @@ app.use(express.json());
 app.get("/", (req, res) => {
   res.send("Hello World!");
 });
+
+app.use("/api/posts", postRoutes);
+app.use("/api/comments", commentRoutes);
 
 AppDataSource.initialize()
   .then(() => {
