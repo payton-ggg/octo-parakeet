@@ -5,8 +5,14 @@ const postRepository = AppDataSource.getRepository(Post);
 
 export const getAllPosts = async (req, res) => {
   try {
+    const page = parseInt(req.query.page) || 1;
+    const limit = 6;
+    const skip = (page - 1) * limit;
+
     const posts = await postRepository.find({
-      relations: ["comments"],
+      skip,
+      take: limit,
+      order: { createdAt: "DESC" },
     });
 
     res.status(200).json(posts);
