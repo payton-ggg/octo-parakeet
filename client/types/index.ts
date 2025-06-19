@@ -2,7 +2,7 @@ export interface Comment {
   id: number;
   content: string;
   createdAt: string;
-  post: Post;
+  postId: number;
 }
 
 export interface Post {
