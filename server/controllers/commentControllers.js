@@ -1,17 +1,27 @@
+import { AppDataSource } from "../config/db.js";
 import { Comment } from "../entities/Comment.js";
 import { Post } from "../entities/Post.js";
 
+const postRepository = AppDataSource.getRepository(Post);
+const commentRepository = AppDataSource.getRepository(Comment);
+
 export const createComment = async (req, res) => {
   try {
-    const post = await Post.findByPk(req.params.postId);
+    const post = await postRepository.findOne({
+      where: { id: parseInt(req.params.postId) },
+    });
+
     if (!post) {
       res.status(404).json({ message: "Пост не найден" });
       return;
     }
-    const comment = await Comment.create({
+    const comment = commentRepository.create({
       ...req.body,
       postId: post.id,
     });
+
+    await commentRepository.save(comment);
+
     res.status(201).json(comment);
   } catch (error) {
     res.status(500).json({ message: error.message });

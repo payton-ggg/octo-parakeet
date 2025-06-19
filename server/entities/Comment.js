@@ -8,12 +8,12 @@ export const Comment = new EntitySchema({
       primary: true,
       generated: true,
     },
+    postId: {
+      type: "int",
+    },
     content: {
       type: "varchar",
       length: 50,
-    },
-    postId: {
-      type: "int",
     },
     createdAt: {
       type: "timestamp",
