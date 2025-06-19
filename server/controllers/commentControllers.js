@@ -16,8 +16,8 @@ export const createComment = async (req, res) => {
       return;
     }
     const comment = commentRepository.create({
+      postId: parseInt(post.id),
       ...req.body,
-      postId: post.id,
     });
 
     await commentRepository.save(comment);
