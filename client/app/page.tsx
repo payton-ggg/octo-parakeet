@@ -41,7 +41,7 @@ export default function Home() {
         {items.map((post) => (
           <article
             key={post.id}
-            className="group bg-white border border-gray-100 rounded-3xl p-8 shadow-sm hover:shadow-2xl transition-all duration-500 hover:border-gray-200 hover:-translate-y-1 backdrop-blur-sm"
+            className="group flex flex-col justify-between bg-white border border-gray-100 rounded-3xl p-8 shadow-sm hover:shadow-2xl transition-all duration-500 hover:border-gray-200 hover:-translate-y-1 backdrop-blur-sm"
           >
             <div className="mb-6">
               <h2 className="text-3xl font-bold text-gray-900 mb-4 leading-tight group-hover:text-blue-700 transition-colors duration-300">
