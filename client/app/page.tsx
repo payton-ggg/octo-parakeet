@@ -23,11 +23,14 @@ export default function Home() {
 
       {status === "loading" && <p>Loading...</p>}
 
-      <ul className="mt-4 space-y-4">
+      <ul className="mt-4 space-y-4 list-none ">
         {items.map((post) => (
-          <li key={post.id}>
-            <Link href={`/posts/${post.id}`}>
-              <div className="p-4 border rounded hover:bg-gray-50">
+          <li key={post.id} className="">
+            <Link
+              href={`/posts/${post.id}`}
+              className="text-[#000] no-underline hover:underline"
+            >
+              <div className="p-2 border rounded hover:bg-gray-50">
                 <h2 className="text-xl font-semibold">{post.title}</h2>
                 <p className="text-gray-600">{post.content.slice(0, 100)}...</p>
               </div>
