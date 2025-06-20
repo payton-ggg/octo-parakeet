@@ -19,10 +19,6 @@ Base URL: http://localhost:5000/api
 | DELETE | `/posts/:postId`             | Delete post                   |
 | POST   | `/comments/:postId/comments` | Add comment                   |
 
-Sure, here’s a short and clear `README.md` in English with instructions on how to run your full-stack blog app:
-
----
-
 ## 🚀 How to Run the Project
 
 ### 🔧 1. Clone the Repository
