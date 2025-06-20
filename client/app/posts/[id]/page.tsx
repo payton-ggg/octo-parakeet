@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import CommentForm from "@/components/CommentForm";
 import { api } from "@/lib/api";
 import { Post } from "@/types";
+import { DeleteButton } from "@/components/DeletePost";
 
 interface PostPageProps {
   params: { id: string };
@@ -50,6 +51,7 @@ export default async function PostPage({ params }: PostPageProps) {
       ) : (
         <p>No comments yet.</p>
       )}
+      <DeleteButton postId={post.id} />
       <CommentForm postId={post.id} />
     </main>
   );

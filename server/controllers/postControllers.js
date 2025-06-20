@@ -5,13 +5,7 @@ const postRepository = AppDataSource.getRepository(Post);
 
 export const getAllPosts = async (req, res) => {
   try {
-    const page = parseInt(req.query.page) || 1;
-    const limit = 6;
-    const skip = (page - 1) * limit;
-
     const posts = await postRepository.find({
-      skip,
-      take: limit,
       order: { createdAt: "DESC" },
     });
 
@@ -69,15 +63,15 @@ export const updatePost = async (req, res) => {
 };
 
 export const deletePost = async (req, res) => {
+  const { id } = req.params;
+
   try {
-    const post = await postRepository.findByPk(req.params.id);
-    if (!post) {
-      res.status(404).json({ message: "Пост не найден" });
-      return;
-    }
-    await post.destroy();
-    res.status(200).json({ message: "Пост удален" });
-  } catch (error) {
-    res.status(500).json({ message: error.message });
+    const post = await postRepository.findOneBy({ id: parseInt(id) });
+    if (!post) return res.status(404).json({ message: "Not found" });
+
+    await postRepository.remove(post);
+    res.status(204).end();
+  } catch (err) {
+    res.status(500).json({ message: "Error deleting post" });
   }
 };
