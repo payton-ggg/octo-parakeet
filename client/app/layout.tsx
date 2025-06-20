@@ -17,6 +17,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={inter.className}>
+      <head>
+        <link rel="manifest" href="/client/public/manifest.webmanifest" />
+      </head>
       <body>
         <ReduxProvider>{children}</ReduxProvider>
       </body>
