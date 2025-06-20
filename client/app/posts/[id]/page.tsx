@@ -4,10 +4,6 @@ import { api } from "@/lib/api";
 import { Post } from "@/types";
 import { DeleteButton } from "@/components/DeletePost";
 
-interface PostPageProps {
-  params: { id: string };
-}
-
 async function fetchPost(id: string): Promise<Post | null> {
   try {
     const res = await api.get(`/posts/${id}`);
@@ -17,7 +13,11 @@ async function fetchPost(id: string): Promise<Post | null> {
   }
 }
 
-export default async function PostPage({ params }: PostPageProps) {
+export default async function PostPage({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
   const { id } = await params;
 
   const post = await fetchPost(id);
