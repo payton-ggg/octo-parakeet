@@ -1,8 +1,8 @@
 "use client";
 
-import PostForm from "../../../components/PostForm";
+import PostForm from "@/components/PostForm";
+import { api } from "@/lib/api";
 import { useRouter } from "next/navigation";
-import { api } from "../../../lib/api";
 
 export default function CreatePostPage() {
   const router = useRouter();

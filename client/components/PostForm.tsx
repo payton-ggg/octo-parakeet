@@ -1,7 +1,7 @@
 "use client";
 
 import { useForm } from "react-hook-form";
-import { Post } from "../types";
+import { Post } from "@/types";
 
 interface PostFormProps {
   onSubmit: (data: Omit<Post, "id" | "createdAt" | "updatedAt">) => void;
