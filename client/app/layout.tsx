@@ -23,7 +23,6 @@ export default function RootLayout({
         <link rel="icon" href="/icon.png" />
       </head>
       <body>
-        <InstallButton />
         <ReduxProvider>{children}</ReduxProvider>
       </body>
     </html>
