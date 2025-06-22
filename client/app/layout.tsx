@@ -18,7 +18,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={inter.className}>
       <head>
-        <link rel="manifest" href="/public/manifest.json" />
+        <link rel="manifest" href="/manifest.json" />
       </head>
       <body>
         <ReduxProvider>{children}</ReduxProvider>
