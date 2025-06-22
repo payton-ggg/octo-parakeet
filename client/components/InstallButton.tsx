@@ -85,7 +85,7 @@ const InstallButton = () => {
       />
 
       {/* Popup Modal */}
-      <div className="fixed bottom-0 left-0 right-0 z-50 bg-white rounded-t-3xl shadow-2xl animate-slide-up">
+      <div className="fixed bottom-0 left-0 right-0 z-50 bg-white rounded-t-3xl shadow-2xl animate-slide-up install-button">
         <div className="p-6">
           {/* Handle bar */}
           <div className="w-12 h-1 bg-gray-300 rounded-full mx-auto mb-4" />
@@ -135,21 +135,6 @@ const InstallButton = () => {
           </div>
         </div>
       </div>
-
-      <style jsx>{`
-        @keyframes slide-up {
-          from {
-            transform: translateY(100%);
-          }
-          to {
-            transform: translateY(0);
-          }
-        }
-
-        .animate-slide-up {
-          animation: slide-up 0.3s ease-out;
-        }
-      `}</style>
     </>
   );
 };
