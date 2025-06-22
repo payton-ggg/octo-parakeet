@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Inter } from "next/font/google";
 import { ReduxProvider } from "../store/provider";
+import InstallButton from "@/components/InstallButton";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,8 +20,10 @@ export default function RootLayout({
     <html lang="en" className={inter.className}>
       <head>
         <link rel="manifest" href="/manifest.json" />
+        <link rel="icon" href="/icon.png" />
       </head>
       <body>
+        <InstallButton />
         <ReduxProvider>{children}</ReduxProvider>
       </body>
     </html>
