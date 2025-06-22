@@ -29,7 +29,6 @@ const InstallButton = () => {
       e.preventDefault();
       setDeferredPrompt(e);
 
-      // Only show popup on mobile devices
       if (checkMobile()) {
         setShowPopup(true);
       }
@@ -40,7 +39,6 @@ const InstallButton = () => {
       handleBeforeInstallPrompt as EventListener
     );
 
-    // Handle window resize
     const handleResize = () => {
       setIsMobile(checkMobile());
     };
@@ -71,26 +69,21 @@ const InstallButton = () => {
     setDeferredPrompt(null);
   };
 
-  // Don't render anything if not mobile or popup shouldn't show
   if (!isMobile || !showPopup) {
     return null;
   }
 
   return (
     <>
-      {/* Backdrop */}
       <div
         className="fixed inset-0 bg-black bg-opacity-50 z-50"
         onClick={handleDismiss}
       />
 
-      {/* Popup Modal */}
-      <div className="fixed bottom-0 left-0 right-0 z-50 bg-white rounded-t-3xl shadow-2xl animate-slide-up install-button">
+      <div className="fixed bottom-0 left-0 right-0 z-50 bg-white rounded-t-3xl shadow-2xl animate-slide-up">
         <div className="p-6">
-          {/* Handle bar */}
           <div className="w-12 h-1 bg-gray-300 rounded-full mx-auto mb-4" />
 
-          {/* Content */}
           <div className="text-center">
             <div className="mb-4">
               <div className="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-3">
@@ -117,7 +110,6 @@ const InstallButton = () => {
               </p>
             </div>
 
-            {/* Buttons */}
             <div className="flex flex-col gap-3">
               <button
                 onClick={handleInstallClick}
@@ -135,6 +127,21 @@ const InstallButton = () => {
           </div>
         </div>
       </div>
+
+      <style jsx>{`
+        @keyframes slide-up {
+          from {
+            transform: translateY(100%);
+          }
+          to {
+            transform: translateY(0);
+          }
+        }
+
+        .animate-slide-up {
+          animation: slide-up 0.3s ease-out;
+        }
+      `}</style>
     </>
   );
 };
